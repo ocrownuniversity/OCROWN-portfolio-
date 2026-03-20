@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OCROWN Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #07080a;
+    --surface: #0f1115;
+    --card: #13151a;
+    --border: #1e2128;
+    --accent: #c8a96e;
+    --accent2: #5ec4a1;
+    --accent3: #e07b6a;
+    --text: #f0ede8;
+    --muted: #7a7d86;
+    --subtle: #2a2d35;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 500;
+    padding: 1.4rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    border-bottom-color: var(--border);
+    backdrop-filter: blur(20px);
+    background: rgba(7,8,10,0.85);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--accent);
+    color: #07080a;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.25s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+    top: 10%; left: -10%;
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(94,196,161,0.06) 0%, transparent 70%);
+    bottom: 10%; right: 5%;
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.4s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--accent); }
+  .hero-title .line2 { display: block; padding-left: 4rem; }
+  .hero-desc {
+    max-width: 520px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.8s forwards;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.9s ease 1s forwards;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 8rem 4rem; position: relative; }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent2);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ABOUT */
+  .about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+  }
+  .about-box::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px;
+    right: 8px; bottom: 8px;
+    border: 1px solid var(--accent);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .about-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .skill-pill {
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.8rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-align: center;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .about-contact-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .contact-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .project-card {
+    background: var(--card);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+  .project-card:hover { background: #1a1d24; }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card.featured { grid-column: span 2; min-height: 380px; }
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .project-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    width: fit-content;
+  }
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+  }
+  .project-card.featured .project-name { font-size: 2rem; }
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--muted);
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: gap 0.25s;
+  }
+  .project-link:hover { gap: 0.8rem; }
+  .project-link::after { content: '→'; }
+  .cat-health  { --card-accent: #5ec4a1; }
+  .cat-edu     { --card-accent: #c8a96e; }
+  .cat-ecom    { --card-accent: #e07b6a; }
+  .cat-hotel   { --card-accent: #a06ec8; }
+  .cat-agro    { --card-accent: #6ea8c8; }
+  .cat-faith   { --card-accent: #c86e9a; }
+
+  /* PROCESS */
+  .process {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .process-inner { max-width: 1200px; margin: 0 auto; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+  }
+  .process-step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+  }
+  .process-step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s;
+  }
+  .process-step:hover .step-num { color: var(--accent); }
+  .step-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.7rem;
+  }
+  .step-desc {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  .contact-inner { max-width: 1200px; margin: 0 auto; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+  }
+  .contact-info p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.4rem;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .contact-item:hover { border-color: var(--accent); background: rgba(200,169,110,0.04); }
+  .contact-item-icon {
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--subtle);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .contact-item-value { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.85rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.25s;
+    resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { min-height: 120px; }
+  .form-group select option { background: var(--card); }
+  .btn-submit {
+    padding: 1rem 2.5rem;
+    background: var(--accent);
+    color: #07080a;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.25s;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text);
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 1.8rem; list-style: none; }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    section { padding: 6rem 2rem; }
+    .hero { padding: 9rem 2rem 5rem; }
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .project-card.featured { grid-column: span 2; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-step:nth-child(2) { border-right: none; }
+    .process-step:nth-child(3) { border-top: 1px solid var(--border); }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.2rem; }
+    .hero { padding: 8rem 1.2rem 4rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .hero-title .line2 { padding-left: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">OCR<span>OWN</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:0.65rem 1.5rem;">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-tag">Web Developer · Nigeria</div>
+  <h1 class="hero-title">
+    Building Digital
+    <em><span class="line2">Experiences</span></em>
+  </h1>
+  <p class="hero-desc">
+    Full-stack web developer crafting functional, beautiful websites for businesses across Nigeria —
+    from e-commerce and education to hospitality and healthcare.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-ghost">Get In Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">9+</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Industries Served</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Client Focused</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">NG</div>
+      <div class="stat-label">Based in Nigeria</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <div class="about-box">
+        <div class="about-box-label">// Tech Stack</div>
+        <div class="skills-grid">
+          <div class="skill-pill">HTML5</div>
+          <div class="skill-pill">CSS3</div>
+          <div class="skill-pill">JavaScript</div>
+          <div class="skill-pill">Responsive Design</div>
+          <div class="skill-pill">UI / UX</div>
+          <div class="skill-pill">E-Commerce</div>
+          <div class="skill-pill">Booking Systems</div>
+          <div class="skill-pill">GitHub Pages</div>
+          <div class="skill-pill">Vercel Deploy</div>
+          <div class="skill-pill">WhatsApp API</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div style="margin-bottom:2rem;">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">Developer, <em>Problem Solver</em></h2>
+      </div>
+      <p>
+        I'm a passionate Nigerian web developer with hands-on experience building
+        <strong>real-world digital products</strong> for businesses across Ibadan, Ogun State, and beyond.
+        I specialise in creating clean, fast, and fully functional websites tailored to each client's needs.
+      </p>
+      <p>
+        From <strong>veterinary hospitals</strong> and <strong>universities</strong> to
+        <strong>fashion stores</strong> and <strong>luxury hotels</strong>, I build digital solutions
+        that help organisations grow online and serve their customers better.
+      </p>
+      <p>
+        Every project I build is crafted with attention to detail, mobile responsiveness, and
+        a focus on real business outcomes — not just aesthetics.
+      </p>
+      <div class="about-contact-row">
+        <a href="tel:07080951392" class="contact-chip">📞 07080951392</a>
+        <a href="https://wa.me/2347080951392" target="_blank" class="contact-chip">💬 WhatsApp</a>
+        <a href="https://github.com/ocrownuniversity" target="_blank" class="contact-chip">🐙 GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal" style="max-width:1400px; margin: 0 auto 3rem;">
+    <div class="section-tag">My Work</div>
+    <h2 class="section-title">Selected <em>Projects</em></h2>
+  </div>
+  <div class="projects-grid">
+
+    <!-- 1. OCROWN University — FEATURED -->
+    <div class="project-card featured cat-edu">
+      <div class="project-number">01 / 09</div>
+      <div class="project-category">🎓 Higher Education</div>
+      <div class="project-name">OCROWN University</div>
+      <p class="project-desc">
+        A full university website for OCROWN University, Sango Ota, Ogun State. Features
+        6 faculties, 50+ programmes, online admissions portal (₦10,000 application fee),
+        NUC accreditation info, news updates, and a full admin dashboard — responsive and professional.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Admissions</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Multi-Faculty</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Admin Panel</span>
+        </div>
+        <a href="https://ocrown-university-ryyv.vercel.app" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 2. OCROWN Suites -->
+    <div class="project-card cat-hotel">
+      <div class="project-number">02 / 09</div>
+      <div class="project-category">🏨 Hospitality</div>
+      <div class="project-name">OCROWN Suites</div>
+      <p class="project-desc">
+        Luxury hotel website for OCROWN Suites, Alakia Ibadan. Features 7 room types
+        from ₦18k to ₦65k/night, online booking with room access codes, guest reviews,
+        and 24/7 concierge contact via WhatsApp.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Booking System</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Room Management</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Ocrownsuites/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 3. OCROWN Vet Hospital -->
+    <div class="project-card cat-health">
+      <div class="project-number">03 / 09</div>
+      <div class="project-category">🏥 Healthcare</div>
+      <div class="project-name">OCROWN Veterinary Hospital</div>
+      <p class="project-desc">
+        Ibadan's trusted vet care platform. Appointment booking by pet type, 8 certified
+        vets, 5,000+ pets treated, 24/7 emergency care, and full service listings
+        accessible via WhatsApp.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Appointments</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Healthcare</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Ocrown-veterinary-hospital-/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 4. FERDEW Hub -->
+    <div class="project-card cat-ecom">
+      <div class="project-number">04 / 09</div>
+      <div class="project-category">🛍️ E-Commerce</div>
+      <div class="project-name">FERDEW Hub</div>
+      <p class="project-desc">
+        Full fashion e-commerce store in Agodi, Ibadan. Product catalogue across 6 categories,
+        shopping cart, flash sales up to 40% off, bank transfer and cash-on-delivery payments,
+        and WhatsApp order support.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Shopping Cart</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Payments</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Ferdew-hub/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 5. BENIM Market -->
+    <div class="project-card cat-ecom">
+      <div class="project-number">05 / 09</div>
+      <div class="project-category">🛒 Marketplace</div>
+      <div class="project-name">BENIM Market</div>
+      <p class="project-desc">
+        Smart online marketplace for Adegbayi, Ibadan. Free delivery within Ibadan,
+        seller registration, WhatsApp integration, and a clean "shop smart, live better"
+        shopping experience.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Marketplace</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Free Delivery</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Benimmarket/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 6. BENIM Trade -->
+    <div class="project-card cat-ecom">
+      <div class="project-number">06 / 09</div>
+      <div class="project-category">👗 Fashion Retail</div>
+      <div class="project-name">BENIM Trade</div>
+      <p class="project-desc">
+        Premium fashion store website for BENIM Trade, Ibadan. A professional retail
+        platform showcasing curated fashion collections for men, women, and kids
+        with a sleek, brand-forward design.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Fashion</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Retail</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Benim_Trade/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 7. FERDEW Secondary School — FEATURED -->
+    <div class="project-card featured cat-edu">
+      <div class="project-number">07 / 09</div>
+      <div class="project-category">📚 Education</div>
+      <div class="project-name">FERDEW Secondary School</div>
+      <p class="project-desc">
+        Complete school website for FERDEW Secondary School, Bashorun Ibadan. Admissions portal
+        for JSS1 & SSS1, 4-step application process, gallery, news, school life section,
+        and impressive stats — 500+ students, 50+ staff, 98% WAEC pass rate.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Admissions</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Secondary School</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Gallery</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Ferdew2/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 8. OCROWN AgroVet -->
+    <div class="project-card cat-agro">
+      <div class="project-number">08 / 09</div>
+      <div class="project-category">🌾 Agriculture</div>
+      <div class="project-name">OCROWN AgroVet</div>
+      <p class="project-desc">
+        Agricultural and veterinary services platform for OCROWN AgroVet, Alakia Ibadan.
+        A trusted partner website for farmers and livestock owners, combining agro-supplies
+        with veterinary support in one professional platform.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">Agriculture</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Veterinary</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/OCROWNAGROVET1/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- 9. IGEM Learning Platform -->
+    <div class="project-card cat-faith">
+      <div class="project-number">09 / 09</div>
+      <div class="project-category">✝️ Faith & Learning</div>
+      <div class="project-name">IGEM Learning Platform</div>
+      <p class="project-desc">
+        Online learning platform for IGEM Christ Covenant Church, Ibadan. Features
+        course management, member sign-in and registration, admin panel, and a
+        structured learning experience for church members.
+      </p>
+      <div class="project-footer">
+        <div class="project-tags">
+          <span class="project-tag">LMS</span>
+          <span class="project-tag"> · </span>
+          <span class="project-tag">Church Platform</span>
+        </div>
+        <a href="https://ocrownuniversity.github.io/Igemcitylearningplatform/" target="_blank" class="project-link">Visit Site</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <div class="section-tag">How I Work</div>
+      <h2 class="section-title">My <em>Process</em></h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery</div>
+        <p class="step-desc">I start by understanding your business, your goals, and your target audience to plan the right solution.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">I craft a clean, branded design that reflects your identity and creates a great first impression online.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Build</div>
+        <p class="step-desc">I develop the site with clean code, fast loading, mobile responsiveness, and real functionality.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Launch</div>
+        <p class="step-desc">I deploy your website, test everything, and hand it over — with ongoing support whenever you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Let's Build <em>Together</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Ready to start your project?</h3>
+        <p>
+          Whether you need a business website, an e-commerce store, a school portal, or
+          a booking platform — I'm ready to bring your vision to life. Reach out via any
+          of the channels below and let's talk.
+        </p>
+        <div class="contact-items">
+          <a href="tel:07080951392" class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">07080951392</div>
+            </div>
+          </a>
+          <a href="https://wa.me/2347080951392" target="_blank" class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-value">+234 708 095 1392</div>
+            </div>
+          </a>
+          <a href="https://github.com/ocrownuniversity" target="_blank" class="contact-item">
+            <div class="contact-item-icon">🐙</div>
+            <div>
+              <div class="contact-item-label">GitHub</div>
+              <div class="contact-item-value">ocrownuniversity</div>
+            </div>
+          </a>
+          <div class="contact-item" style="cursor:default;">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Location</div>
+              <div class="contact-item-value">Ibadan, Oyo State, Nigeria</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label>Phone / Email</label>
+            <input type="text" placeholder="08012345678" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select>
+            <option value="">Select a project type...</option>
+            <option>Business Website</option>
+            <option>E-Commerce Store</option>
+            <option>School / University Portal</option>
+            <option>Hotel / Booking Platform</option>
+            <option>Healthcare Platform</option>
+            <option>Learning Management System</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me about your project</label>
+          <textarea placeholder="Describe what you need..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit(this)">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">OCR<span>OWN</span></div>
+  <p class="footer-copy">© 2026 OCROWN Developer Portfolio · Ibadan, Nigeria</p>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/2347080951392" target="_blank">WhatsApp</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = entry.target.dataset.delay || '0s';
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger project cards
+  document.querySelectorAll('.project-card').forEach((card, i) => {
+    card.classList.add('reveal');
+    card.dataset.delay = `${i * 0.06}s`;
+    observer.observe(card);
+  });
+
+  // Form submit — sends to WhatsApp
+  function handleSubmit(btn) {
+    const form = btn.closest('.contact-form');
+    const name = form.querySelectorAll('input')[0].value.trim();
+    const contact = form.querySelectorAll('input')[1].value.trim();
+    const type = form.querySelector('select').value;
+    const message = form.querySelector('textarea').value.trim();
+
+    if (!name || !contact || !message) {
+      btn.textContent = '⚠ Please fill all fields';
+      btn.style.background = '#e07b6a';
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+      }, 2500);
+      return;
+    }
+
+    const waMsg = encodeURIComponent(
+      `Hello! I'm ${name}.\n\nProject Type: ${type || 'Not specified'}\nContact: ${contact}\n\nMessage:\n${message}`
+    );
+    window.open(`https://wa.me/2347080951392?text=${waMsg}`, '_blank');
+
+    btn.textContent = '✓ Opening WhatsApp...';
+    btn.style.background = '#5ec4a1';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Subtle 3D tilt on project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 5;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 5;
+      card.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateZ(4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'background 0.3s ease, transform 0.5s ease';
+    });
+  });
+</script>
+</body>
+</html>
