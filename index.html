@@ -3,7 +3,43 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>OCROWN Developer Portfolio</title>
+<title>OCROWN Developer | Web Developer in Ibadan, Nigeria — Real Systems for Real Businesses</title>
+<meta name="description" content="Professional web developer in Ibadan, Nigeria. I build hotel booking systems, e-commerce stores, school portals, and business websites. Contact me today: 07080951392." />
+<meta name="keywords" content="web developer Ibadan, website designer Nigeria, e-commerce developer Nigeria, school portal developer, hotel booking website Nigeria, OCROWN developer" />
+<meta name="author" content="OCROWN Developer" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://ocrownuniversity.github.io/" />
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OCROWN Developer | Web Developer in Ibadan, Nigeria" />
+<meta property="og:description" content="I build hotel booking systems, e-commerce stores, school portals, and business websites for Nigerian businesses. 9+ real-world projects delivered." />
+<meta property="og:url" content="https://ocrownuniversity.github.io/" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="OCROWN Developer | Web Developer in Ibadan, Nigeria" />
+<meta name="twitter:description" content="I build hotel booking systems, e-commerce stores, school portals, and business websites for Nigerian businesses." />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "OCROWN Developer",
+  "jobTitle": "Web Developer",
+  "telephone": "+2347080951392",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ibadan",
+    "addressRegion": "Oyo State",
+    "addressCountry": "NG"
+  },
+  "url": "https://ocrownuniversity.github.io/",
+  "sameAs": ["https://github.com/ocrownuniversity"]
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -438,6 +474,278 @@
   .cat-agro    { --card-accent: #6ea8c8; }
   .cat-faith   { --card-accent: #c86e9a; }
 
+  /* PROJECT FEATURES LIST */
+  .project-features {
+    list-style: none;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .project-features li {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+  .project-features li::before {
+    content: '✓';
+    color: var(--card-accent, var(--accent2));
+    font-size: 0.7rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+  .project-problem {
+    font-size: 0.78rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    background: rgba(200,169,110,0.06);
+    border-left: 2px solid var(--accent);
+    padding: 0.5rem 0.8rem;
+    margin-top: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* SKILLS SECTION */
+  .skills-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+  .skills-inner { max-width: 1200px; margin: 0 auto; }
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3.5rem;
+  }
+  .skill-category {
+    background: var(--card);
+    padding: 2.2rem 2rem;
+    transition: background 0.3s;
+  }
+  .skill-category:hover { background: #1a1d24; }
+  .skill-cat-icon {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .skill-cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .skill-cat-desc {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .skill-badge {
+    padding: 0.3rem 0.65rem;
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+  }
+
+  /* TRUST / CREDIBILITY SECTION */
+  .trust-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .trust-inner { max-width: 1200px; margin: 0 auto; }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .trust-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .trust-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .trust-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .trust-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+  .trust-desc {
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .trust-highlight {
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .trust-highlight-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .trust-highlight-text em { font-style: italic; color: var(--accent); }
+  .trust-highlight-stats {
+    display: flex;
+    gap: 3rem;
+    flex-shrink: 0;
+  }
+  .trust-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .trust-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* BIG CTA SECTION */
+  .cta-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 8rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .cta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+  .cta-label::before, .cta-label::after {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent2);
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-title em { font-style: italic; color: var(--accent); }
+  .cta-sub {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 3rem;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-wa {
+    padding: 1rem 2.5rem;
+    background: #25D366;
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .btn-wa:hover { opacity: 0.88; }
+  .cta-note {
+    margin-top: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* Nav upgrade */
+  .nav-links li a.active { color: var(--accent); }
+
+  /* Responsive additions */
+  @media (max-width: 1024px) {
+    .skills-categories { grid-template-columns: 1fr 1fr; }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .trust-highlight { grid-template-columns: 1fr; gap: 2rem; }
+    .trust-highlight-stats { gap: 2rem; }
+  }
+  @media (max-width: 640px) {
+    .skills-categories { grid-template-columns: 1fr; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .trust-highlight { padding: 1.8rem; }
+    .trust-highlight-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .cta-section { padding: 5rem 1.2rem; }
+  }
+
   /* PROCESS */
   .process {
     background: var(--surface);
@@ -653,7 +961,8 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#process">Process</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#trust">Why Me</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:0.65rem 1.5rem;">Hire Me</a>
@@ -664,23 +973,22 @@
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="hero-tag">Web Developer · Nigeria</div>
+  <div class="hero-tag">Web Developer · Ibadan, Nigeria</div>
   <h1 class="hero-title">
-    Building Digital
-    <em><span class="line2">Experiences</span></em>
+    I Build Real
+    <em><span class="line2">Web Systems</span></em>
   </h1>
   <p class="hero-desc">
-    Full-stack web developer crafting functional, beautiful websites for businesses across Nigeria —
-    from e-commerce and education to hospitality and healthcare.
+    I'm a Nigerian web developer who builds <strong style="color:var(--text)">hotel booking platforms, e-commerce stores, school portals, and business websites</strong> that actually work — for businesses, schools, hotels, hospitals, and organisations across Nigeria.
   </p>
   <div class="hero-actions">
-    <a href="#projects" class="btn-primary">View Projects</a>
-    <a href="#contact" class="btn-ghost">Get In Touch</a>
+    <a href="https://wa.me/2347080951392" target="_blank" class="btn-primary">💬 Hire Me on WhatsApp</a>
+    <a href="#projects" class="btn-ghost">View My Work</a>
   </div>
   <div class="hero-stats">
     <div class="stat-item">
       <div class="stat-num">9+</div>
-      <div class="stat-label">Projects Built</div>
+      <div class="stat-label">Live Projects</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">5+</div>
@@ -688,7 +996,7 @@
     </div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
-      <div class="stat-label">Client Focused</div>
+      <div class="stat-label">Functional Sites</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">NG</div>
@@ -758,14 +1066,17 @@
       <div class="project-number">01 / 09</div>
       <div class="project-category">🎓 Higher Education</div>
       <div class="project-name">OCROWN University</div>
-      <p class="project-desc">
-        A full university website for OCROWN University, Sango Ota, Ogun State. Features
-        6 faculties, 50+ programmes, online admissions portal (₦10,000 application fee),
-        NUC accreditation info, news updates, and a full admin dashboard — responsive and professional.
-      </p>
+      <p class="project-desc">A full university website for OCROWN University, Sango Ota, Ogun State — built to help the institution attract students, process admissions online, and present its programmes professionally.</p>
+      <ul class="project-features">
+        <li>6 faculties and 50+ undergraduate programmes listed</li>
+        <li>Online admissions portal with ₦10,000 application fee integration</li>
+        <li>NUC accreditation and JAMB affiliation info</li>
+        <li>News section, admin dashboard, and fully mobile-responsive design</li>
+      </ul>
+      <div class="project-problem">Problem solved: Gave the university a credible online presence to attract and process student applications.</div>
       <div class="project-footer">
         <div class="project-tags">
-          <span class="project-tag">Admissions</span>
+          <span class="project-tag">Admissions Portal</span>
           <span class="project-tag"> · </span>
           <span class="project-tag">Multi-Faculty</span>
           <span class="project-tag"> · </span>
@@ -780,11 +1091,13 @@
       <div class="project-number">02 / 09</div>
       <div class="project-category">🏨 Hospitality</div>
       <div class="project-name">OCROWN Suites</div>
-      <p class="project-desc">
-        Luxury hotel website for OCROWN Suites, Alakia Ibadan. Features 7 room types
-        from ₦18k to ₦65k/night, online booking with room access codes, guest reviews,
-        and 24/7 concierge contact via WhatsApp.
-      </p>
+      <p class="project-desc">Luxury hotel website with a full room booking system for OCROWN Suites, Alakia Ibadan — allowing guests to reserve rooms online and receive access codes.</p>
+      <ul class="project-features">
+        <li>7 room types from ₦18,000 to ₦65,000/night</li>
+        <li>Online booking form with room access code delivery</li>
+        <li>Guest reviews section and 24/7 concierge via WhatsApp</li>
+      </ul>
+      <div class="project-problem">Problem solved: Replaced manual phone bookings with a self-service online reservation system.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Booking System</span>
@@ -800,11 +1113,13 @@
       <div class="project-number">03 / 09</div>
       <div class="project-category">🏥 Healthcare</div>
       <div class="project-name">OCROWN Veterinary Hospital</div>
-      <p class="project-desc">
-        Ibadan's trusted vet care platform. Appointment booking by pet type, 8 certified
-        vets, 5,000+ pets treated, 24/7 emergency care, and full service listings
-        accessible via WhatsApp.
-      </p>
+      <p class="project-desc">A full veterinary clinic platform for OCROWN Vet Hospital, Ibadan — letting pet owners book appointments online by pet type and find the right vet.</p>
+      <ul class="project-features">
+        <li>Appointment booking filtered by pet type (dog, cat, bird, etc.)</li>
+        <li>8 certified vets profiled, 5,000+ pets treated</li>
+        <li>24/7 emergency care listings, WhatsApp integration</li>
+      </ul>
+      <div class="project-problem">Problem solved: Moved pet appointment booking online, reducing phone call overhead.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Appointments</span>
@@ -820,11 +1135,13 @@
       <div class="project-number">04 / 09</div>
       <div class="project-category">🛍️ E-Commerce</div>
       <div class="project-name">FERDEW Hub</div>
-      <p class="project-desc">
-        Full fashion e-commerce store in Agodi, Ibadan. Product catalogue across 6 categories,
-        shopping cart, flash sales up to 40% off, bank transfer and cash-on-delivery payments,
-        and WhatsApp order support.
-      </p>
+      <p class="project-desc">A fully functional fashion e-commerce store for FERDEW Hub, Agodi Ibadan — with product listings, cart, checkout, and payment options built in.</p>
+      <ul class="project-features">
+        <li>Product catalogue across 6 categories (Women, Men, Kids, Shoes, Bags, Accessories)</li>
+        <li>Shopping cart, flash sales (up to 40% off), and promo banners</li>
+        <li>Bank transfer + cash-on-delivery payments, WhatsApp order support</li>
+      </ul>
+      <div class="project-problem">Problem solved: Gave a physical fashion store a fully online sales channel.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Shopping Cart</span>
@@ -840,11 +1157,13 @@
       <div class="project-number">05 / 09</div>
       <div class="project-category">🛒 Marketplace</div>
       <div class="project-name">BENIM Market</div>
-      <p class="project-desc">
-        Smart online marketplace for Adegbayi, Ibadan. Free delivery within Ibadan,
-        seller registration, WhatsApp integration, and a clean "shop smart, live better"
-        shopping experience.
-      </p>
+      <p class="project-desc">An online marketplace platform for BENIM Market, Adegbayi Ibadan — connecting sellers and buyers with free local delivery and WhatsApp-based order management.</p>
+      <ul class="project-features">
+        <li>Multi-vendor product listings with seller registration</li>
+        <li>Free delivery within Ibadan, WhatsApp order integration</li>
+        <li>Login, register, and "Sell on BENIM" seller portal</li>
+      </ul>
+      <div class="project-problem">Problem solved: Created a digital marketplace for a local trading community.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Marketplace</span>
@@ -860,11 +1179,13 @@
       <div class="project-number">06 / 09</div>
       <div class="project-category">👗 Fashion Retail</div>
       <div class="project-name">BENIM Trade</div>
-      <p class="project-desc">
-        Premium fashion store website for BENIM Trade, Ibadan. A professional retail
-        platform showcasing curated fashion collections for men, women, and kids
-        with a sleek, brand-forward design.
-      </p>
+      <p class="project-desc">A premium fashion retail website for BENIM Trade, Ibadan — designed to present their brand professionally and attract fashion-conscious shoppers online.</p>
+      <ul class="project-features">
+        <li>Curated collections for men, women, and kids</li>
+        <li>Brand-forward design with clean product presentation</li>
+        <li>Contact and inquiry integration for orders</li>
+      </ul>
+      <div class="project-problem">Problem solved: Gave a fashion brand a professional digital storefront to compete online.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Fashion</span>
@@ -880,11 +1201,14 @@
       <div class="project-number">07 / 09</div>
       <div class="project-category">📚 Education</div>
       <div class="project-name">FERDEW Secondary School</div>
-      <p class="project-desc">
-        Complete school website for FERDEW Secondary School, Bashorun Ibadan. Admissions portal
-        for JSS1 & SSS1, 4-step application process, gallery, news, school life section,
-        and impressive stats — 500+ students, 50+ staff, 98% WAEC pass rate.
-      </p>
+      <p class="project-desc">A complete school website for FERDEW Secondary School, Bashorun Ibadan — designed to attract new students, process admissions, and build the school's online credibility.</p>
+      <ul class="project-features">
+        <li>Admissions portal for JSS1 & SSS1 with step-by-step application guide</li>
+        <li>School stats: 500+ students, 50+ staff, 98% WAEC pass rate</li>
+        <li>Gallery, news section, and school life showcase</li>
+        <li>Fully mobile-responsive with WhatsApp contact integration</li>
+      </ul>
+      <div class="project-problem">Problem solved: Built the school's first professional website to compete with other institutions and attract prospective students.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Admissions</span>
@@ -902,11 +1226,13 @@
       <div class="project-number">08 / 09</div>
       <div class="project-category">🌾 Agriculture</div>
       <div class="project-name">OCROWN AgroVet</div>
-      <p class="project-desc">
-        Agricultural and veterinary services platform for OCROWN AgroVet, Alakia Ibadan.
-        A trusted partner website for farmers and livestock owners, combining agro-supplies
-        with veterinary support in one professional platform.
-      </p>
+      <p class="project-desc">Agricultural and veterinary services platform for OCROWN AgroVet, Alakia Ibadan — helping farmers and livestock owners find supplies and vet support online.</p>
+      <ul class="project-features">
+        <li>Combined agro-supplies and veterinary services listing</li>
+        <li>Professional brand presentation for a trust-sensitive market</li>
+        <li>WhatsApp-based enquiry and contact system</li>
+      </ul>
+      <div class="project-problem">Problem solved: Created a credible online presence for an agro-vet business in a largely offline sector.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">Agriculture</span>
@@ -922,11 +1248,13 @@
       <div class="project-number">09 / 09</div>
       <div class="project-category">✝️ Faith & Learning</div>
       <div class="project-name">IGEM Learning Platform</div>
-      <p class="project-desc">
-        Online learning platform for IGEM Christ Covenant Church, Ibadan. Features
-        course management, member sign-in and registration, admin panel, and a
-        structured learning experience for church members.
-      </p>
+      <p class="project-desc">An online learning management system for IGEM Christ Covenant Church, Ibadan — allowing the church to host and deliver courses to its members digitally.</p>
+      <ul class="project-features">
+        <li>Course creation and management system (LMS)</li>
+        <li>Member registration, sign-in, and profile management</li>
+        <li>Admin panel for content and user management</li>
+      </ul>
+      <div class="project-problem">Problem solved: Gave the church a dedicated e-learning platform to serve its growing membership online.</div>
       <div class="project-footer">
         <div class="project-tags">
           <span class="project-tag">LMS</span>
@@ -970,6 +1298,170 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="skills-inner">
+    <div class="reveal">
+      <div class="section-tag">What I Can Do</div>
+      <h2 class="section-title">My <em>Technical Skills</em></h2>
+    </div>
+    <div class="skills-categories reveal">
+      <div class="skill-category">
+        <span class="skill-cat-icon">🌐</span>
+        <div class="skill-cat-title">Frontend Development</div>
+        <p class="skill-cat-desc">Building fast, beautiful, and fully responsive websites that look great on every screen.</p>
+        <div class="skill-list">
+          <span class="skill-badge">HTML5</span>
+          <span class="skill-badge">CSS3</span>
+          <span class="skill-badge">JavaScript (ES6+)</span>
+          <span class="skill-badge">Responsive Design</span>
+          <span class="skill-badge">Animations & Transitions</span>
+          <span class="skill-badge">Mobile-First</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <span class="skill-cat-icon">🗄️</span>
+        <div class="skill-cat-title">Backend & Databases</div>
+        <p class="skill-cat-desc">Powering real features: user auth, booking systems, admin panels, and live data.</p>
+        <div class="skill-list">
+          <span class="skill-badge">Firebase</span>
+          <span class="skill-badge">Firestore Database</span>
+          <span class="skill-badge">Firebase Auth</span>
+          <span class="skill-badge">Local Storage</span>
+          <span class="skill-badge">JSON APIs</span>
+          <span class="skill-badge">Form Handling</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <span class="skill-cat-icon">🛒</span>
+        <div class="skill-cat-title">E-Commerce & Portals</div>
+        <p class="skill-cat-desc">Building complete systems — stores, booking platforms, student portals, and LMS.</p>
+        <div class="skill-list">
+          <span class="skill-badge">Shopping Cart Systems</span>
+          <span class="skill-badge">Booking & Scheduling</span>
+          <span class="skill-badge">Admissions Portals</span>
+          <span class="skill-badge">Payment Integration</span>
+          <span class="skill-badge">Admin Dashboards</span>
+          <span class="skill-badge">LMS Platforms</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <span class="skill-cat-icon">🎨</span>
+        <div class="skill-cat-title">UI / UX Design</div>
+        <p class="skill-cat-desc">Designing interfaces that are clean, professional, and easy for any user to navigate.</p>
+        <div class="skill-list">
+          <span class="skill-badge">UI Design</span>
+          <span class="skill-badge">UX Planning</span>
+          <span class="skill-badge">Dark & Light Themes</span>
+          <span class="skill-badge">Branding</span>
+          <span class="skill-badge">Typography</span>
+          <span class="skill-badge">Layout Composition</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <span class="skill-cat-icon">🔗</span>
+        <div class="skill-cat-title">Integrations & Tools</div>
+        <p class="skill-cat-desc">Connecting websites to real-world tools so businesses can work efficiently online.</p>
+        <div class="skill-list">
+          <span class="skill-badge">WhatsApp API</span>
+          <span class="skill-badge">Google Maps</span>
+          <span class="skill-badge">Email Integration</span>
+          <span class="skill-badge">Social Media Links</span>
+          <span class="skill-badge">GitHub Pages</span>
+          <span class="skill-badge">Vercel Deployment</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <span class="skill-cat-icon">🔍</span>
+        <div class="skill-cat-title">SEO & Performance</div>
+        <p class="skill-cat-desc">Optimising websites to rank on Google and load fast for every visitor.</p>
+        <div class="skill-list">
+          <span class="skill-badge">On-Page SEO</span>
+          <span class="skill-badge">Meta Tags</span>
+          <span class="skill-badge">Structured Data</span>
+          <span class="skill-badge">Page Speed</span>
+          <span class="skill-badge">Open Graph</span>
+          <span class="skill-badge">Semantic HTML</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / WHY ME -->
+<section class="trust-section" id="trust">
+  <div class="trust-inner">
+    <div class="reveal">
+      <div class="section-tag">Why Choose Me</div>
+      <h2 class="section-title">Built on <em>Real Experience</em></h2>
+    </div>
+    <div class="trust-grid reveal">
+      <div class="trust-card">
+        <span class="trust-icon">🏗️</span>
+        <div class="trust-title">Real Systems, Not Templates</div>
+        <p class="trust-desc">Every project I build is coded from scratch — custom booking engines, admissions portals, and shopping carts built specifically for each client's needs. No generic page builders.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🇳🇬</span>
+        <div class="trust-title">Built for Nigerian Businesses</div>
+        <p class="trust-desc">I understand the Nigerian market — WhatsApp-first communication, bank transfer payments, local delivery systems, and WAEC/JAMB requirements. I build for how Nigerians actually do business.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">📱</span>
+        <div class="trust-title">Mobile-First, Always</div>
+        <p class="trust-desc">All my websites are fully responsive and work perfectly on Android and iPhone. Most Nigerians browse on mobile — your website will be ready for them.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">⚡</span>
+        <div class="trust-title">Fast Delivery</div>
+        <p class="trust-desc">I deliver functional websites quickly without cutting corners. From discovery to live deployment, I keep you updated at every step and deliver on time.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🔧</span>
+        <div class="trust-title">Full Functionality</div>
+        <p class="trust-desc">I don't just make websites look good — they actually work. Booking forms send emails, carts process orders, and admin panels let you manage your content independently.</p>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🤝</span>
+        <div class="trust-title">Ongoing Support</div>
+        <p class="trust-desc">I stay available after delivery. Need an update, a fix, or a new feature? I'm reachable on WhatsApp and committed to supporting the projects I build.</p>
+      </div>
+    </div>
+    <div class="trust-highlight reveal">
+      <div class="trust-highlight-text">
+        I have delivered <em>9 fully functional, live websites</em> across hospitality, education, e-commerce, healthcare, agriculture, and faith — all hosted and running today.
+      </div>
+      <div class="trust-highlight-stats">
+        <div>
+          <div class="trust-stat-num">9</div>
+          <div class="trust-stat-label">Live Sites</div>
+        </div>
+        <div>
+          <div class="trust-stat-num">5+</div>
+          <div class="trust-stat-label">Industries</div>
+        </div>
+        <div>
+          <div class="trust-stat-num">0</div>
+          <div class="trust-stat-label">Broken Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<section class="cta-section" id="hire">
+  <div class="cta-label">Ready to work together?</div>
+  <h2 class="cta-title reveal">Your Business Deserves a <em>Real Website</em></h2>
+  <p class="cta-sub reveal">Whether you're a hotel, a school, a shop, or a startup — I'll build you a website that works, converts, and grows with your business. Let's talk today.</p>
+  <div class="cta-buttons reveal">
+    <a href="https://wa.me/2347080951392?text=Hello!%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20website%20project." target="_blank" class="btn-wa">💬 Chat on WhatsApp</a>
+    <a href="tel:07080951392" class="btn-primary">📞 Call 07080951392</a>
+    <a href="#contact" class="btn-ghost">Send a Message</a>
+  </div>
+  <p class="cta-note reveal">📍 Based in Ibadan, Nigeria · Available for remote projects across Nigeria</p>
 </section>
 
 <!-- CONTACT -->
@@ -1055,10 +1547,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">OCR<span>OWN</span></div>
-  <p class="footer-copy">© 2026 OCROWN Developer Portfolio · Ibadan, Nigeria</p>
+  <p class="footer-copy">© 2026 OCROWN Developer · Web Developer, Ibadan Nigeria</p>
   <ul class="footer-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#trust">Why Me</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://wa.me/2347080951392" target="_blank">WhatsApp</a></li>
   </ul>
@@ -1120,6 +1614,20 @@
       btn.style.background = '';
     }, 3000);
   }
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  const secObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => secObserver.observe(s));
 
   // Subtle 3D tilt on project cards
   document.querySelectorAll('.project-card').forEach(card => {
